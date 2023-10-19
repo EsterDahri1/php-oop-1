@@ -11,18 +11,25 @@ Bonus 2: Creare un layout completo per stampare a schermo una lista di movies. �
 # Class declaration
 class Movie
 {
+    public $poster;
     public $title;
     public $year;
     public $director;
     public $timeDuration;
 
 
-    function __construct($_title, $_year, $_director, $_timeDuration)
+    function __construct($_poster, $_title, $_year, $_director, $_timeDuration)
     {
+        $this->poster = $_poster;
         $this->title = $_title;
         $this->year = $_year;
         $this->director = $_director;
         $this->timeDuration = $_timeDuration;
+    }
+
+    public function getPoster()
+    {
+        echo $this->poster;
     }
 
     public function getTitle()
@@ -46,11 +53,14 @@ class Movie
 }
 
 # Create class istances
-$movie_1 = new Movie('Barbie', 2023, 'Greta Gerwig', '114 min');
-$movie_2 = new Movie('Avatar: The Way of Water', 2022, 'James Cameron', '192 min');
-$movie_3 = new Movie('Culpa mìa', 2023, 'Domingo Gonzales', '117 min');
 
-# Access to the object properties print on page
+$movies = [
+    new Movie('https://pad.mymovies.it/filmclub/2018/01/274/locandinapg1.jpg', 'Barbie', 2023, 'Greta Gerwig', '114 min'),
+    new Movie('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQy9jPtAHveL7z7VdtujkHdoyE2So140KC7LceE4XB0oL2yUEF_', 'Avatar: The Way of Water', 2022, 'James Cameron', '192 min'),
+    new Movie('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBz8xB1m_j5ZWsLLNUPlRkqmcSXHB6LkkiLepcCDeyTgJ0bTPp', 'Culpa mìa', 2023, 'Domingo Gonzales', '117 min')
+]
+
+/*# Access to the object properties print on page
 $movie_1->title = 'Barbie';
 $movie_1->year = 2023;
 $movie_1->director = 'Greta Gerwig';
@@ -64,7 +74,7 @@ $movie_2->timeDuration = '192 min';
 $movie_3->title = 'Culpa mìa';
 $movie_3->year = 2023;
 $movie_3->director = 'Domingo Gonzales';
-$movie_3->timeDuration = '117 min';
+$movie_3->timeDuration = '117 min';*/
 
 // var_dump($movie_1);
 // var_dump($movie_2);
@@ -119,52 +129,23 @@ $movie_3->timeDuration = '117 min';
         <div class="pt-3 container">
             <h1 class="pb-3 text-center text-primary">Movies</h1>
             <div class="row">
-
-                <div class="col-4 card-group">
-                    <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title text-center text-primary"><?= $movie_1->title ?></h4>
-                            <p class="card-text">
-                            <ul>
-                                <li><strong>Anno di uscita:</strong> <?= $movie_1->year ?></li>
-                                <li><strong>Regista:</strong> <?= $movie_1->director ?></li>
-                                <li><strong>Durata:</strong> <?= $movie_1->timeDuration ?></li>
-                            </ul>
-                            </p>
+                <?php foreach ($movies as $movie) : ?>
+                    <div class="col-4 card-group">
+                        <div class="pt-4 card d-flex align-items-center justify-content-center">
+                            <img style="height: 400px; width: 300px;" class="card-img-top" src="<?php $movie->getPoster() ?>" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title text-center text-primary"><?= $movie->getTitle() ?></h4>
+                                <p class="card-text">
+                                <ul>
+                                    <li><strong>Anno di uscita:</strong> <?= $movie->getYear() ?></li>
+                                    <li><strong>Regista:</strong> <?= $movie->getDirector() ?></li>
+                                    <li><strong>Durata:</strong> <?= $movie->getTimeDuration() ?></li>
+                                </ul>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4 card-group">
-                    <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title text-center text-primary"><?= $movie_2->title ?></h4>
-                            <p class="card-text">
-                            <ul>
-                                <li><strong>Anno di uscita:</strong> <?= $movie_2->year ?></li>
-                                <li><strong>Regista:</strong> <?= $movie_2->director ?></li>
-                                <li><strong>Durata:</strong> <?= $movie_2->timeDuration ?></li>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 card-group">
-                    <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title text-center text-primary"><?= $movie_3->title ?></h4>
-                            <p class="card-text">
-                            <ul>
-                                <li><strong>Anno di uscita:</strong> <?= $movie_3->year ?></li>
-                                <li><strong>Regista:</strong> <?= $movie_3->director ?></li>
-                                <li><strong>Durata:</strong> <?= $movie_3->timeDuration ?></li>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </main>
