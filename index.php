@@ -79,63 +79,114 @@ $movie_3->timeDuration = '117 min';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP OOP 1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-info bg-opacity-25">
-    <div class="pt-5 container">
-        <h1 class="text-center text-primary">Movies</h1>
-        <div class="row">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Movies</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">2022</a>
+                                <a class="dropdown-item" href="#">2023</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="d-flex my-2 my-lg-0">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search a movie">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
-            <div class="col-4 card-group">
-                <div class="card">
-                    <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-center text-primary"><?= $movie_1->title ?></h4>
-                        <p class="card-text">
-                        <ul>
-                            <li><?= $movie_1->year ?></li>
-                            <li><?= $movie_1->director ?></li>
-                            <li><?= $movie_1->timeDuration ?></li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 card-group">
-                <div class="card">
-                    <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-center text-primary"><?= $movie_2->title ?></h4>
-                        <p class="card-text">
-                        <ul>
-                            <li><?= $movie_2->year ?></li>
-                            <li><?= $movie_2->director ?></li>
-                            <li><?= $movie_2->timeDuration ?></li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 card-group">
-                <div class="card">
-                    <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-center text-primary"><?= $movie_3->title ?></h4>
-                        <p class="card-text">
-                        <ul>
-                            <li><?= $movie_3->year ?></li>
-                            <li><?= $movie_3->director ?></li>
-                            <li><?= $movie_3->timeDuration ?></li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
+    </header>
+    <main>
+        <div class="pt-3 container">
+            <h1 class="pb-3 text-center text-primary">Movies</h1>
+            <div class="row">
 
+                <div class="col-4 card-group">
+                    <div class="card">
+                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title text-center text-primary"><?= $movie_1->title ?></h4>
+                            <p class="card-text">
+                            <ul>
+                                <li><strong>Anno di uscita:</strong> <?= $movie_1->year ?></li>
+                                <li><strong>Regista:</strong> <?= $movie_1->director ?></li>
+                                <li><strong>Durata:</strong> <?= $movie_1->timeDuration ?></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 card-group">
+                    <div class="card">
+                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title text-center text-primary"><?= $movie_2->title ?></h4>
+                            <p class="card-text">
+                            <ul>
+                                <li><strong>Anno di uscita:</strong> <?= $movie_2->year ?></li>
+                                <li><strong>Regista:</strong> <?= $movie_2->director ?></li>
+                                <li><strong>Durata:</strong> <?= $movie_2->timeDuration ?></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 card-group">
+                    <div class="card">
+                        <img class="card-img-top" src="https://picsum.photos/100/80" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title text-center text-primary"><?= $movie_3->title ?></h4>
+                            <p class="card-text">
+                            <ul>
+                                <li><strong>Anno di uscita:</strong> <?= $movie_3->year ?></li>
+                                <li><strong>Regista:</strong> <?= $movie_3->director ?></li>
+                                <li><strong>Durata:</strong> <?= $movie_3->timeDuration ?></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-    </div>
+    </main>
+    <footer class="mt-4 p-2 bg-light text-center h-70">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div>
+                <a class="btn btn-outline-primary rounded-2" href="https://www.instagram.com/boolean.careers/?hl=it">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a class="btn btn-outline-primary rounded-2" href="https://www.facebook.com/boolean.careers/?locale=it_IT">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-primary rounded-2" href="https://boolean.careers/corso/full-stack-web-development">
+                    <i class="fa-solid fa-globe"></i>
+                </a>
+            </div>
+            <div>
+                &copy; 2023 By
+                <a class="text-decoration-none" href="https://boolean.careers/corso/full-stack-web-development">Boolean &hearts;</a>
+            </div>
+        </div>
+    </footer>
 
 
 
